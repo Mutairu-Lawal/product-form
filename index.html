@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Form - Modern Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="form-card">
+        <div class="form-header">
+          <h1>Add New Product</h1>
+          <p>Fill in the details to create a new product listing</p>
+        </div>
+
+        <div class="form-body">
+          <form id="productForm">
+            <div class="form-grid">
+              <!-- Product Name -->
+              <div class="form-group full-width">
+                <label for="productName"
+                  >Product Name <span class="required">*</span></label
+                >
+                <input
+                  type="text"
+                  id="productName"
+                  name="productName"
+                  placeholder="Enter product name"
+                  required
+                />
+              </div>
+
+              <!-- Description -->
+              <div class="form-group full-width">
+                <label for="description"
+                  >Description <span class="required">*</span></label
+                >
+                <textarea
+                  id="description"
+                  name="description"
+                  placeholder="Describe your product in detail..."
+                  required
+                ></textarea>
+                <div class="char-counter">
+                  <span id="charCount">0</span> / 500 characters
+                </div>
+              </div>
+
+              <!-- Stock and Price Row -->
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="stock"
+                    >Stock Quantity <span class="required">*</span></label
+                  >
+                  <div class="stock-input-group">
+                    <input
+                      type="number"
+                      id="stock"
+                      name="stock"
+                      placeholder="0"
+                      min="0"
+                      required
+                    />
+                    <div
+                      class="stock-indicator out-of-stock"
+                      id="stockIndicator"
+                    >
+                      <span class="stock-dot"></span>
+                      <span id="stockStatus">Out of Stock</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="price"
+                    >Price <span class="required">*</span></label
+                  >
+                  <div class="price-wrapper">
+                    <span class="currency-symbol">$</span>
+                    <input
+                      type="number"
+                      id="price"
+                      name="price"
+                      placeholder="0.00"
+                      step="0.01"
+                      min="0"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <!-- Categories -->
+              <div class="form-group full-width">
+                <label>Categories <span class="required">*</span></label>
+                <div class="category-grid">
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-electronics"
+                      name="categories"
+                      value="Electronics"
+                    />
+                    <label for="cat-electronics" class="category-label"
+                      >Electronics</label
+                    >
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-clothing"
+                      name="categories"
+                      value="Clothing"
+                    />
+                    <label for="cat-clothing" class="category-label"
+                      >Clothing</label
+                    >
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-home"
+                      name="categories"
+                      value="Home & Garden"
+                    />
+                    <label for="cat-home" class="category-label"
+                      >Home & Garden</label
+                    >
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-sports"
+                      name="categories"
+                      value="Sports"
+                    />
+                    <label for="cat-sports" class="category-label"
+                      >Sports</label
+                    >
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-books"
+                      name="categories"
+                      value="Books"
+                    />
+                    <label for="cat-books" class="category-label">Books</label>
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-toys"
+                      name="categories"
+                      value="Toys"
+                    />
+                    <label for="cat-toys" class="category-label">Toys</label>
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-beauty"
+                      name="categories"
+                      value="Beauty"
+                    />
+                    <label for="cat-beauty" class="category-label"
+                      >Beauty</label
+                    >
+                  </div>
+                  <div class="category-item">
+                    <input
+                      type="checkbox"
+                      id="cat-food"
+                      name="categories"
+                      value="Food & Beverage"
+                    />
+                    <label for="cat-food" class="category-label"
+                      >Food & Beverage</label
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Image Upload -->
+              <div class="form-group full-width">
+                <label>Product Image</label>
+                <div class="image-upload" id="imageUpload">
+                  <div class="upload-icon">📷</div>
+                  <div class="upload-text">
+                    Drop your image here or click to browse
+                  </div>
+                  <div class="upload-hint">
+                    Supports: JPG, PNG, WEBP (Max 5MB)
+                  </div>
+                  <input
+                    type="file"
+                    id="imageInput"
+                    name="image"
+                    accept="image/*"
+                  />
+                </div>
+                <div class="image-preview" id="imagePreview">
+                  <img id="previewImg" src="" alt="Preview" />
+                </div>
+              </div>
+
+              <!-- Form Actions -->
+              <div class="form-actions full-width">
+                <button type="button" class="btn btn-secondary" id="resetBtn">
+                  Reset Form
+                </button>
+                <button type="submit" class="btn btn-primary">
+                  Create Product
+                </button>
+              </div>
+
+              <div class="success-message" id="successMessage">
+                ✓ Product created successfully!
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
