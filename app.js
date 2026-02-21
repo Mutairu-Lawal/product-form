@@ -111,22 +111,27 @@ productForm.addEventListener('submit', function (e) {
     price: parseFloat(formData.get('price')),
     categories: categories,
     image: imageInput.files[0],
-    // image: formData.get('image'),
   };
 
   // Log the product data (in real app, this would be sent to server)
-  console.log('Product Data:', product);
-
-  // Show success message
-  successMessage.classList.add('active');
-
-  // Hide success message after 3 seconds
-  setTimeout(() => {
-    successMessage.classList.remove('active');
-  }, 3000);
-
-  // Scroll to top smoothly
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  // Send to server
+  fetch('http://localhost:3000/api/products', {
+    method: 'POST',
+    body: formData,
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log('Success:', data);
+      successMessage.classList.add('active');
+      setTimeout(() => {
+        successMessage.classList.remove('active');
+        productForm.reset();
+      }, 3000);
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      alert('Error creating product');
+    });
 });
 
 // Reset form
